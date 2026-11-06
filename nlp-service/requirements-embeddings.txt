@@ -1,0 +1,2 @@
+# Optional, large download (several hundred MB). Enables semantic scoring.
+sentence-transformers>=3.0

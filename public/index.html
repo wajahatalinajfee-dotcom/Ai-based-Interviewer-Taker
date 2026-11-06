@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yawaq Coding Studio | AI Interview Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="appbar" class="appbar" hidden><div class="wrap nav">
+  <a class="logo" href="/" onclick="nav(event,'/')"><i></i>Yawaq Coding Studio</a>
+  <nav class="links" aria-label="App"><a href="/dashboard" onclick="nav(event,'/dashboard')">Dashboard</a><a href="/interview" onclick="nav(event,'/interview')">Interview</a></nav>
+  <div class="prof"><button class="who" id="whoBtn" aria-haspopup="true" aria-expanded="false"><span class="av" id="whoAv"></span><span id="whoName"></span></button>
+    <div class="menu" id="whoMenu" hidden><b id="mName"></b><span class="lbl" id="mEmail"></span><button class="ghost" onclick="logout()">Log out</button></div></div>
+</div></header>
+
+<section id="home">
+<header class="site"><div class="wrap nav">
+  <a class="logo" href="#top"><i></i>Yawaq Coding Studio</a>
+  <nav class="links" aria-label="Sections"><a href="#platform">Platform</a><a href="#features">Features</a><a href="#tracks">Tracks</a><a href="#results">Results</a><a href="#faq">FAQ</a></nav>
+  <div class="ctrl" id="navActions"></div>
+</div></header>
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="chip">AI-powered interview practice</span>
+      <h1>Practice real interviews. Out loud. Get hired faster.</h1>
+      <p class="sub">Yawaq Coding Studio is a live AI interviewer that asks fresh questions, listens to your voice, reviews your code and coaches you, so interview day feels familiar.</p>
+      <div class="ctrl"><button class="dark" onclick="startFlow()">Start free interview <span class="dot2"></span></button><a class="ghost" href="#platform">See how it works</a></div>
+      <ul class="ticks"><li>Voice answers, no typing needed</li><li>Questions never repeat</li><li>Scores and a 7-day plan</li></ul>
+    </div>
+    <div class="herocard">
+      <div class="heroav" id="heroAv"></div>
+      <div class="fchip c1"><span class="lbl">Accuracy</span><b>9/10</b></div>
+      <div class="fchip c2"><span class="lbl">Level</span><b>L3 Mid</b></div>
+      <div class="fchip c3"><span class="dot"></span> Live interview</div>
+    </div>
+  </div>
+
+  <section id="platform" class="wrap sec">
+    <span class="chip">Platform</span><h2 class="sh">How an interview works</h2>
+    <p class="ssub">One session takes about 20 minutes and mirrors a real hiring loop.</p>
+    <div class="steps">
+      <div class="card"><em>1</em><h3>Choose your track</h3><p>Pick Programming basics, MERN, MEAN or AI, and a starting level from Newbie to Expert.</p></div>
+      <div class="card"><em>2</em><h3>Talk to the interviewer</h3><p>Questions are spoken aloud. Answer by voice and see your words appear live.</p></div>
+      <div class="card"><em>3</em><h3>Code, then behavioral</h3><p>Solve a JavaScript problem with tests, then answer HR questions scored with the STAR method.</p></div>
+      <div class="card"><em>4</em><h3>Review and improve</h3><p>Get scores, better answers, weak topics and a 7-day practice plan saved to your dashboard.</p></div>
+    </div>
+  </section>
+
+  <section id="features" class="wrap sec">
+    <span class="chip">Features</span><h2 class="sh">Everything you need to feel ready</h2>
+    <div class="fgrid">
+      <div class="card feat"><h3>Live voice interviewer</h3><p>A talking avatar asks questions and reacts as you speak, with captions on screen.</p></div>
+      <div class="card feat"><h3>Fresh questions every time</h3><p>Topic, question type and scenario are randomized, and repeats are blocked.</p></div>
+      <div class="card feat"><h3>4 adaptive levels</h3><p>Answer well and the questions get harder. Struggle and they step back to build you up.</p></div>
+      <div class="card feat"><h3>Coding round with tests</h3><p>Write JavaScript, run it against tests in the browser, then get a review of your logic and style.</p></div>
+      <div class="card feat"><h3>HR round with STAR scoring</h3><p>See which of Situation, Task, Action and Result you covered, plus filler-word counts.</p></div>
+      <div class="card feat"><h3>Dashboard and history</h3><p>Track score trends, strongest topics and every past interview in one place.</p></div>
+    </div>
+  </section>
+
+  <section id="tracks" class="wrap sec">
+    <span class="chip">Tracks</span><h2 class="sh">Built for developer roles</h2>
+    <div class="tracks">
+      <div class="card"><h3>Programming basics</h3><p>Variables, loops, functions, arrays, objects, scope, closures.</p></div>
+      <div class="card"><h3>MERN</h3><p>MongoDB, Express, React hooks and state, Node, JWT, REST.</p></div>
+      <div class="card"><h3>MEAN</h3><p>Angular, RxJS, services, TypeScript, Express and MongoDB.</p></div>
+      <div class="card"><h3>AI developer</h3><p>ML basics, LLMs, embeddings, RAG, AI APIs, responsible AI.</p></div>
+    </div>
+  </section>
+
+  <section id="results" class="band"><div class="wrap">
+    <span class="chip">Success ratio</span><h2 class="sh">Results that show up in your scores</h2>
+    <div class="stats" id="stats"></div>
+  </div></section>
+
+  <section id="faq" class="wrap sec faq">
+    <span class="chip">FAQ</span><h2 class="sh">Questions, answered</h2>
+    <details><summary>Is it free?</summary><p>You can start for free. Interviews use a free AI tier, so at busy times you may briefly see a "try again" message.</p></details>
+    <details><summary>Do I need a microphone?</summary><p>Voice works best in Chrome or Edge with a microphone. You can always type your answers instead.</p></details>
+    <details><summary>What data do you keep?</summary><p>We store your account, scores and reports so your dashboard works. We do not store audio. Your answers are sent to Google's Gemini API to be scored, and Chrome's speech recognition sends audio to Google.</p></details>
+    <details><summary>Will I get the same questions twice?</summary><p>No. Each question is generated fresh from a random topic, type and scenario, and recent questions are blocked.</p></details>
+    <details><summary>Which roles are supported?</summary><p>Programming basics, MERN, MEAN and AI developer tracks today, with more roles planned.</p></details>
+  </section>
+
+  <section class="wrap sec"><div class="cta"><h2>Your next interview starts here.</h2><p>Create a free account and run your first practice interview in minutes.</p><button class="dark lime" onclick="startFlow()">Get started <span class="dot2"></span></button></div></section>
+</main>
+<footer class="foot"><div class="wrap"><div class="logo"><i></i>Yawaq Coding Studio</div>
+  <nav class="links"><a href="#platform">Platform</a><a href="#features">Features</a><a href="#tracks">Tracks</a><a href="#faq">FAQ</a></nav>
+  <span class="lbl">&copy; <span id="yr"></span> Yawaq Coding Studio. All rights reserved.</span></div></footer>
+</section>
+
+<section id="auth" class="screen" hidden>
+  <div class="authbox card">
+    <a class="logo" href="#top" onclick="go('home')"><i></i>Yawaq Coding Studio</a>
+    <h2 id="atitle">Create your account</h2><p class="sub" id="asub">Save your interviews and track your progress.</p>
+    <div class="fld" id="nameRow"><label class="lbl" for="aname">Name</label><input id="aname" autocomplete="name"></div>
+    <div class="fld"><label class="lbl" for="aemail">Email</label><input id="aemail" type="email" autocomplete="email"></div>
+    <div class="fld"><label class="lbl" for="apass">Password</label><input id="apass" type="password" autocomplete="current-password" placeholder="At least 8 characters"></div>
+    <p class="err" id="aerr" role="alert"></p>
+    <button class="dark wide" id="asubmit">Create account <span class="dot2"></span></button>
+    <p class="lbl swap"><span id="aswap"></span> <a href="#" id="atoggle"></a></p>
+    <button class="ghost" onclick="go('home')">Back to home</button>
+  </div>
+</section>
+
+<section id="dash" class="screen" hidden>
+  <h1 class="rtitle" id="dhello">Dashboard</h1>
+  <div id="dbody"></div>
+</section>
+
+<section id="setup" class="screen" hidden>
+  <div class="hero2">
+    <div>
+      <div id="resume"></div>
+      <span class="chip">Voice-based mock interviews</span>
+      <h1>Get interview-ready before interview day.</h1>
+      <p class="sub">Answer out loud to a live interviewer. Questions change every time and get harder as you do well.</p>
+      <span class="lbl">Track</span>
+      <div class="pick" id="roles">
+        <button data-v="basics" aria-pressed="true">Programming basics</button>
+        <button data-v="mern" aria-pressed="false">MERN</button>
+        <button data-v="mean" aria-pressed="false">MEAN</button>
+        <button data-v="ai" aria-pressed="false">AI</button>
+      </div>
+      <span class="lbl">Starting level</span>
+      <div class="pick" id="levels">
+        <button data-v="0" aria-pressed="true">Newbie</button>
+        <button data-v="1" aria-pressed="false">Junior</button>
+        <button data-v="2" aria-pressed="false">Mid</button>
+        <button data-v="3" aria-pressed="false">Expert</button>
+      </div>
+      <details class="jd"><summary>Add a job description (optional)</summary><textarea id="jd" rows="4" maxlength="2000" placeholder="Paste the job post to tailor the questions."></textarea></details>
+      <span class="lbl">Interview language</span>
+      <div class="pick" id="langs"><button data-v="en" aria-pressed="true">English</button><button data-v="ur" aria-pressed="false">اردو (Urdu)</button></div>
+      <button class="dark" id="start">Start interview <span class="dot2"></span></button>
+      <p class="err" id="serr" role="alert"></p>
+      <p class="lbl" id="vinfo"></p>
+      <p class="lbl" id="warn"></p>
+    </div>
+    <div class="preview card" aria-hidden="true">
+      <span class="lbl">Sample preview</span>
+      <ol class="qlist"><li class="now">When would a React component re-render too often?</li><li>Why add an index to a MongoDB collection?</li><li>What happens if two requests update one document?</li></ol>
+      <div class="rings"><div><b>82%</b>Clarity</div><div><b>76%</b>Depth</div><div><b>9/10</b>Accuracy</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="room" hidden>
+  <header class="top"><div class="pager" id="prog" aria-label="Questions"></div></header>
+  <div class="grid">
+    <aside class="side">
+      <span class="lbl">Level</span>
+      <nav class="ladder" id="ladder" aria-label="Level"><i>L1</i><i>L2</i><i>L3</i><i>L4</i></nav>
+      <span class="lbl">Topics</span>
+      <ol class="qlist" id="qlist"></ol>
+    </aside>
+    <main class="stage card">
+      <div class="live"><span class="dot"></span>Live interview<span class="status" id="status"></span></div>
+      <div class="avatar" id="av">
+        <svg viewBox="0 0 300 300" aria-hidden="true">
+          <circle cx="150" cy="150" r="128" fill="#ff5a1f"/>
+          <path d="M44 300c6-62 48-90 106-90s100 28 106 90z" fill="#1b2a35"/>
+          <path d="M126 212l24 52 24-52z" fill="#fff"/>
+          <rect x="134" y="172" width="32" height="46" rx="14" fill="#d3a07a"/>
+          <circle cx="98" cy="146" r="11" fill="#dba983"/><circle cx="202" cy="146" r="11" fill="#dba983"/>
+          <ellipse cx="150" cy="140" rx="53" ry="62" fill="#e5b891"/>
+          <path d="M96 130c-3-48 30-62 56-60 32 2 54 22 52 60-10-24-28-32-54-32s-44 8-54 32z" fill="#2a1f1b"/>
+          <ellipse class="eye" cx="128" cy="144" rx="5.5" ry="6.5" fill="#1a1210"/><ellipse class="eye" cx="172" cy="144" rx="5.5" ry="6.5" fill="#1a1210"/>
+          <path d="M112 126q16-8 30 0M158 126q14-8 30 0" stroke="#2a1f1b" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <g stroke="#111" stroke-width="3.5" fill="none"><circle cx="128" cy="144" r="21"/><circle cx="172" cy="144" r="21"/><path d="M149 142h2M107 142l-10-3M193 142l10-3"/></g>
+          <path d="M150 150v16q-6 4 0 4" stroke="#c18c66" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <ellipse id="mouth" cx="150" cy="188" rx="15" ry="2.5" fill="#5a2226"/>
+        </svg>
+      </div>
+      <div class="qtext" id="q" dir="auto"></div>
+      <pre id="code" hidden></pre>
+      <div class="say">
+        <textarea id="ans" rows="2" dir="auto" placeholder="Your words appear here as you speak. You can also type or edit."></textarea>
+      <div class="meter" title="Microphone level"><i id="meter"></i></div>
+        <div class="ctrl">
+          <button class="ghost" id="repeat">Hear again</button>
+          <button class="orb" id="mic" aria-label="Start or stop microphone">&#9679;</button>
+          <button class="dark" id="submit">Done answering <span class="dot2"></span></button>
+        </div>
+      </div>
+    </main>
+    <aside class="board" aria-live="polite">
+      <div class="card"><span class="lbl">Average score</span><div class="avg"><span id="avg">–</span><small>/10</small></div><div class="streak" id="streak">No answers yet</div></div>
+      <div id="rows"></div>
+    </aside>
+  </div>
+</section>
+
+<section id="coding" class="screen" hidden>
+  <header class="top"><span class="chip">Coding round</span></header>
+  <div class="cwrap">
+    <div class="cleft card">
+      <h2 id="ctitle"></h2><p id="cdesc" class="cdesc"></p>
+      <label class="lbl" for="approach">Explain your approach, out loud or typed</label>
+      <textarea id="approach" rows="4" dir="auto"></textarea>
+      <div class="ctrl"><button class="orb" id="cmic" aria-label="Start or stop microphone">&#9679;</button><button class="ghost" id="cskip">Skip coding round</button></div>
+    </div>
+    <div class="cright card">
+      <label class="lbl" for="editor">JavaScript</label>
+      <textarea id="editor" spellcheck="false"></textarea>
+      <div class="ctrl"><button class="ghost" id="crun">Run tests</button><button class="dark" id="csubmit">Submit for review <span class="dot2"></span></button></div>
+      <ul id="results" class="results"></ul>
+      <div id="review" class="rv" hidden></div>
+      <p class="status" id="cstatus" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<section id="result" class="screen" hidden></section>
+
+<script src="js/state.js"></script>
+<script src="js/api.js"></script>
+<script src="js/speech.js"></script>
+<script src="js/turns.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/interview.js"></script>
+<script src="js/result.js"></script>
+<script src="js/coding.js"></script>
+<script src="js/hr.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/home.js"></script>
+<script src="js/setup.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
